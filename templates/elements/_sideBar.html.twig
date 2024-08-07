@@ -1,0 +1,76 @@
+<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse side">
+    <div class="position-sticky pt-3">
+      {% if is_granted('ROLE_ADMIN')%}
+      <ul class="nav nav-pills flex-column mb-auto">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="{{path('app_dashboard')}}">
+          <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
+          <i class="mdi mdi-login" style="color: red;height: 50px;"></i>
+            <span data-feather="home"></span>
+            Dashboard
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="{{path('app_admin_utilisateur')}}">
+          <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
+            <span data-feather="home"></span>
+            Utilisateur
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{path('app_produit')}}">
+          <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
+            <span data-feather="file"></span>
+            Stock
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{path('app_admin_client')}}">
+          <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
+            <span data-feather="shopping-cart"></span>
+            Client
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{path('app_historique')}}">
+          <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
+            <span data-feather="users"></span>
+            Historiques
+          </a>
+        </li>
+      </ul>
+      {% else %}
+      
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="{{path('app_home')}}">
+          <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
+            <span data-feather="home"></span>
+            Liste produits
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{path('app_panier')}}">
+          <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
+            <span data-feather="file"></span>
+            Commander
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{path('app_admin_client')}}">
+          <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
+            <span data-feather="shopping-cart"></span>
+            Client
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{path('app_historique')}}">
+          <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
+            <span data-feather="users"></span>
+            Historiques
+          </a>
+        </li>
+      </ul>
+      {% endif %}
+    </div>
+  </nav>

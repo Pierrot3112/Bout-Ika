@@ -1,0 +1,58 @@
+{% extends "base.html.twig" %}
+{% block body %}
+
+<div class="container">
+    <div class="row my-3">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+            <a href="{{path('add_utilisateur')}}" class="btn btn-primary">Ajouter nouveau add_client</a>
+        </div>
+    </div>
+    <div class="card card-preview">
+
+        <div class="card-inner">
+            <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                
+                <div class="datatable-wrap my-3">
+                    <table class="datatable-init table dataTable no-footer dtr-inline text-center" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
+                        <thead>
+                            <tr role="row" class=" text-center">
+                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending">#</th>
+                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="">Image</th>
+                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending">Username</th>
+                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="">Login</th>
+                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Contact</th>
+                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Email</th>
+                                <th class="sorting_desc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" aria-sort="descending">Rôle</th>
+                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for user in users %}                       
+                            <tr>
+                                <td class="sorting_1">{{user.id}}</td>
+                                <td class="sorting_1" style="max-width: 50px;">
+                                    <img src="{{asset('images/utilisateur/' ~user.image)}}" class="img-fluid p-1">
+                                </td>
+                                <td class="sorting_1">{{user.username}}</td>
+                                <td class="sorting_1">{{user.login}}</td>
+                                <td class="sorting_1">{{user.contact}}</td>
+                                <td class="sorting_1">{{user.email}}</td>
+                                <td class="sorting_1">{{user.roles | join(' - ')}}</td>
+                                <td class="sorting_1">
+                                    <a href="{{path('update_user',{id: user.id})}}" class="btn btn-primary sm-2">Modifier</a>
+                                    <a href="{{path('delete_user', {id: user.id})}}" class="btn btn-danger sm-2">Supprimer</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

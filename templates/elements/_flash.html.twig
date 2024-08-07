@@ -1,0 +1,6 @@
+{% for type,message in app.flashes %}
+    <div class="alert alert-fill alert-{{type == "error" ? 'danger' : 'success'}} alert-icon">
+        <strong>{{type}}</strong>
+        {{message | join('. ')}}
+    </div>
+{% endfor %}

@@ -1,0 +1,58 @@
+{% extends "base.html.twig" %}
+{% block body %}
+
+<div class="container">
+    <div class="row my-3">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+            <a href="{{path('add_produit')}}" class="btn btn-primary">Ajouter nouveau produit</a>
+        </div>
+    </div>
+    <div class="card card-preview">
+
+        <div class="card-inner">
+            <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                
+                <div class="datatable-wrap my-3">
+                    <table class="datatable-init table dataTable no-footer dtr-inline text-center" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
+                        <thead>
+                            <tr role="row" class=" text-center">
+                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending">#</th>
+                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="">Image</th>
+                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending">Nom</th>
+                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="">Description</th>
+                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Nombre</th>
+                                <th class="sorting_desc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" aria-sort="descending">Prix Unitaire</th>
+                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="">Code Barre</th>
+                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for produit in produits %}                       
+                            <tr>
+                                <td class="sorting_1">{{produit.id}}</td>
+                                <td class="sorting_1" style="max-width: 50px;">
+                                    <img src="{{asset('images/produit/' ~produit.image)}}" class="img-fluid p-1">
+                                </td>
+                                <td class="sorting_1">{{produit.nom}}</td>
+                                <td class="sorting_1">{{produit.description}}</td>
+                                <td class="sorting_1">{{produit.nombre}}</td>
+                                <td class="sorting_1">{{produit.prix}}</td>
+                                <td class="sorting_1">{{produit.codebarre}}</td>
+                                <td class="sorting_1">
+                                    <a href="{{path('update_produit',{id: produit.id})}}" class="btn btn-primary sm-2">Modifier</a>
+                                    <a href="{{path('delete_produit', {id: produit.id})}}" class="btn btn-danger sm-2">Supprimer</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

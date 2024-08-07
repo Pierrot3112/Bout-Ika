@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HistoriqueController!{% endblock %}
+
+{% block body %}
+
+
+<div class="title">
+    <h3 class="text-primary">
+        Listes de tous les historiques de ventes:
+    </h3>
+</div>
+<div class="card card-preview mt-2">
+
+    <div class="card-inner">
+        <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+            
+            <div class="datatable-wrap my-3">
+                <table class="datatable-init table dataTable no-footer dtr-inline text-center" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
+                    <thead>
+                        <tr role="row" class=" text-center">
+                            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending">#</th>
+                            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="">Client</th>
+                            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending">Produit</th>
+                            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="">Utilisateur</th>
+                            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Date</th>
+                            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="">Prix</th>
+                            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="">Quantite</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for h in historiques %}                       
+                        <tr>
+                            <td class="sorting_1">{{h.id}}</td>
+                            <td class="sorting_1">{{h.client.nom}} {{h.client.prenom}}</td>
+                            <td class="sorting_1">{{h.produit.nom}}</td>
+                            <td class="sorting_1">{{h.utilisateur.username}}</td>
+                            <td class="sorting_1">{{h.date | date('d-m-Y')}}</td>
+                            <td class="sorting_1">{{h.prixUnitaire}}</td>
+                            <td class="sorting_1">{{h.quantite}}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

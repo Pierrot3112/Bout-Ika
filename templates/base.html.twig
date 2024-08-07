@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+        {% block stylesheets %}
+        <link rel="stylesheet" href="{{asset('style/dashboard.css')}}" >
+        <link rel="stylesheet" href="{{asset('style/style.css')}}" >
+        <link rel="stylesheet" href="{{asset('bootstrap.min.css')}}" >
+        <link rel="stylesheet" href="{{asset('style/mdi/materialdesignicons.min.css')}}" >
+        <link rel="stylesheet" href="{{asset('style/AdminLTE.css')}}" >
+        <link rel="stylesheet" href="{{asset('style/AdminLTE.min.css')}}" >
+        {% endblock %}
+
+        {% block javascripts %}
+            {% block importmap %}{{ importmap('app') }}{% endblock %}
+        {% endblock %}
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                {% include('elements/_header.html.twig') %}
+                {% include('elements/_sideBar.html.twig') %}
+                <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
+                    {% include('elements/_flash.html.twig') %}
+
+                {% block body %}{% endblock %}
+                </main>
+            </div>
+        </div>
+
+        <script src="{{asset('style/dashboard.js')}}"></script>
+        
+    </body>
+</html>

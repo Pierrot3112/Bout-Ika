@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PanierController!{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="title">
+            <h3 class="text-primary">
+                Ajouter les commandes:
+            </h3>
+        </div>
+        <div class="card bg-dark px-4 py-2">
+            
+            {{form_start(paniers_form)}}
+            <div class="row light">
+                <div class="col-sm-3">
+                    {{form_row(paniers_form.produit)}}
+                </div>
+                <div class="col-sm-3">
+                    {{form_row(paniers_form.nombre)}}
+                </div>
+                <div class="col-sm-3">
+                    {{form_row(paniers_form.client)}}
+                </div>
+                <div class="col-sm-3">
+                    <button type="submit" class=" btn btn-primary mt-4">Ajouter</button>
+                </div>
+            </div>
+            {{form_end(paniers_form)}}
+        </div>
+    </div>
+    <hr class="mt-4">
+    <div class="row mt-4">
+        <div class="col-sm-4">
+        <h3 class="text-primary">
+            Listes des commandes:
+        </h3></div>
+        <div class="col-sm-3"></div>
+        <div class="col-sm-3">
+            <a href="{{path('add_historique')}}" class="btn btn-primary">Valider la commande</a>
+        </div>
+    </div>
+    <div class="card card-preview mt-2">
+
+        <div class="card-inner">
+            <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                
+                <div class="datatable-wrap my-3">
+                    <table class="datatable-init table dataTable no-footer dtr-inline text-center" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
+                        <thead>
+                            <tr role="row" class=" text-center table-primary">
+                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending">#</th>
+                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="">Produit</th>
+                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending">P U</th>
+                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="">Nombre</th>
+                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Prix Total</th>
+                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="">Client</th>
+                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for panier in paniers %}                       
+                            <tr>
+                                <td class="sorting_1">{{panier.id}}</td>
+                                <td class="sorting_1">{{panier.produit.nom}}</td>
+                                <td class="sorting_1">{{panier.prixUnitaire}}</td>
+                                <td class="sorting_1">{{panier.quantite}}</td>
+                                <td class="sorting_1">{{panier.prixUnitaire * panier.quantite}}</td>
+                                <td class="sorting_1">{{panier.client.nom}}</td>
+                                <td class="sorting_1">
+                                    <a href="{{path('app_panier_delete', {id: panier.id})}}" class="btn btn-danger sm-2">Supprimer</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
